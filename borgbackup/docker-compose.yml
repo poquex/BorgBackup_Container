@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  borg_backup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Borg_backup
+    command: ["bash", "-c", "while true; do sleep 3600; done"] # placeholder
+    volumes:
+      - Borg_backup_storage:/storage1
+
+volumes:
+  Borg_backup_storage:
+    driver_opts:
+      type: none
+      device: /mnt/Borg_backups_1TB_HDD		#Change with drive name you gonna use
+      o: bind
+
